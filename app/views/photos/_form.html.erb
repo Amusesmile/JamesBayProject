@@ -1,0 +1,86 @@
+<%= form_for(@photo) do |f| %>
+  <% if @photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+      <% @photo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Title" %><br />
+    <%= f.text_field :title %>
+  </div>
+    <div class="field">
+    <%= f.label "URL" %><br />
+    <%= f.text_field :url %>
+  </div>
+    <div class="field">
+    <%= f.label "Photographer" %><br />
+    <%= f.text_field :photographer %>
+  </div>
+    <div class="field">
+    <%= f.label "Collection" %><br />
+    <%= f.text_field :collection %>
+  </div>
+    <div class="field">
+    <%= f.label "Format" %><br />
+    <%= f.text_field :format %>
+  </div>
+    <div class="field">
+    <%= f.label "Size" %><br />
+    <%= f.text_field :size %>
+  </div>
+      <div class="field">
+    <%= f.label "Location" %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label "Coordinates" %><br />
+    <%= f.text_field :coordinates %>
+  </div>
+      <div class="field">
+    <%= f.label "Cree Syllables" %><br />
+    <%= f.text_field :creeSyllables %>
+  </div>
+        <div class="field">
+    <%= f.label "Description" %><br />
+    <%= f.text_field :description %>
+  </div>
+      <div class="field">
+    <%= f.label "Detailed Description" %><br />
+    <%= f.text_field :longDescription %>
+  </div>
+      <div class="field">
+    <%= f.label "Subjects" %><br />
+    <%= f.text_field :subjects %>
+  </div>
+        <div class="field">
+    <%= f.label "Image Type" %><br />
+    <%= f.text_field :imageType%>
+  </div>
+        <div class="field">
+    <%= f.label "Aesthetic Rating" %><br />
+    <%= f.number_field :aestheticRating %>
+  </div>
+        <div class="field">
+    <%= f.label "Ethnographic Rating" %><br />
+    <%= f.number_field :ethnographicRating %>
+  </div>
+          <div class="field">
+    <%= f.label "Community Rating" %><br />
+    <%= f.number_field :communityRating %>
+  </div>
+  <div class="field">
+    <%= f.label "Date Taken (yyyy-mm-dd)" %><br />
+    <%= f.date_select(:dateTaken, :include_blank=> true, :start_year=> 1900, :end_year=> Date.today.year, :default=> Date.new(1970,01,01)) %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

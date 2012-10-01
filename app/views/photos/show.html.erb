@@ -1,0 +1,85 @@
+<% provide(:title, @photo.title) %>
+<div class="row">
+  <aside class="span4">
+<p>
+  <b>Title:</b>
+  <%= @photo.title %>
+</p>
+<p>
+  <b>Photographer:</b>
+  <%= @photo.photographer %>
+</p>
+<p>
+  <b>Collection:</b>
+  <%= @photo.collection %>
+</p>
+
+<p>
+  <b>Format:</b>
+  <%= @photo.format %>
+</p>
+<p>
+  <b>Size:</b>
+  <%= @photo.size %>
+</p>
+<p>
+  <b>Location:</b>
+  <%= @photo.location %>
+</p>
+<p>
+  <b>Coordinates:</b>
+  <%= @photo.coordinates %>
+</p>
+<p>
+  <b>Cree Syllables:</b>
+  <%= @photo.creeSyllables %>
+</p>
+<p>
+  <b>Description:</b>
+  <%= @photo.description %>
+</p>
+<p>
+  <b>Detailed Description:</b>
+  <%= @photo.longDescription %>
+</p>
+<p>
+  <b>Subjects:</b>
+  <%= @photo.subjects %>
+</p>
+<p>
+  <b>Image Type:</b>
+  <%= @photo.imageType %>
+</p>
+<p>
+  <b>Aesthetic Rating:</b>
+  <%= @photo.aestheticRating %>
+</p>
+<p>
+  <b>Ethnographic Rating:</b>
+  <%= @photo.ethnographicRating %>
+</p>
+<p>
+  <b>Community Rating:</b>
+  <%= @photo.communityRating %>
+</p>
+<p>
+  <b>Date Taken:</b>
+  <%= @photo.dateTaken %>
+</p>
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>
+  </aside>
+  <div class="span8">
+  	<img src="<%=@photo.url%>"></img>
+    <% if @photo.microposts.any? %>
+      <h3>Microposts (<%= @photo.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>  
+</div>
+
+

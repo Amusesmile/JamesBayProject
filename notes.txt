@@ -1,0 +1,86 @@
+sudo install_name_tool -change libmysqlclient.18.dylib /usr/local/mysql/lib/libmysqlclient.18.dylib /Library/Ruby/Gems/1.8/gems/mysql2-0.3.11/lib/mysql2/mysql2.bundle
+
+To make a new item in the database: 
+rails generate scaffold User name:string email:string
+
+then rake db:migrate
+
+To generate a new controller:
+rails generate controller StaticPages home help --no-test-framework
+
+Note that Ruby functions have an implicit return, meaning they return the last statement evaluated—in this case, one of the two message strings, depending on whether the method’s argument string is empty or not. Ruby also has an explicit return option; the following function is equivalent to the one above:
+
+Hashes are essentially a generalization of arrays: you can think of hashes as basically like arrays, but not limited to integer indices. (In fact, some languages, especially Perl, sometimes call hashes associative arrays for this reason.) Instead, hash indices, or keys, can be almost any object. For example, we can use strings as keys:
+
+Although hashes resemble arrays, one important difference is that hashes don’t generally guarantee keeping their elements in a particular order.8 If order matters, use an array.
+
+--
+So far we’ve used strings as hash keys, but in Rails it is much more common to use symbols instead. Symbols look kind of like strings, but prefixed with a colon instead of surrounded by quotes. For example, :name is a symbol. You can think of symbols as basically strings without all the extra baggage
+
+--
+>> s = "foobar"       # A literal constructor for strings using double quotes
+=> "foobar"
+>> s.class
+=> String
+We see here that strings respond to the method class, and simply return the class they belong to.
+
+--
+attr_accessor lets you access variables inside a class.  It makes a getter and a setter. 
+--
+As we’ll see in Chapter 7, it’s often convenient to make and save a model in two steps as we have above, but Active Record also lets you combine them into one step with User.create:
+
+>> User.create(name: "A Nother", email: "another@example.org")
+#<User id: 2, name: "A Nother", email: "another@example.org", created_at:
+"2011-12-05 01:05:24", updated_at: "2011-12-05 01:05:24">
+>> foo = User.create(name: "Foo", email: "foo@bar.com")
+#<User id: 3, name: "Foo", email: "foo@bar.com", created_at: "2011-12-05
+01:05:42", updated_at: "2011-12-05 01:05:42">
+Note that User.create, rather than returning true or false, returns the User object itself, which we can optionally assign to a variable (such as foo in the second command above).
+
+The inverse of create is destroy:
+
+--
+module SessionsHelper
+
+  def sign_in(user)
+    cookies.permanent[:remember_token] = user.remember_token
+    self.current_user = user
+  end
+end
+Listing 8.19 introduces the cookies utility supplied by Rails. We can use cookies as if it were a hash; each element in the cookie is itself a hash of two elements, a value and an optional expires date. For example, we could implement user signin by placing a cookie with value equal to the user’s remember token that expires 20 years from now:
+--
+
+module SessionsHelper
+  .
+  .
+  .
+  def current_user=(user)
+    @current_user = user
+  end
+
+  def current_user
+    @current_user ||= User.find_by_remember_token(cookies[:remember_token])
+  end
+end
+Listing 8.22 uses the common but initially obscure ||= (“or equals”) assignment operator (Box 8.2). Its effect is to set the @current_user instance variable to the user corresponding to the remember token, but only if @current_user is undefined.6 In other words, the construction
+
+--
+
+Listing 9.38. The fully refactored user index. 
+app/views/users/index.html.erb
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @users %>
+</ul>
+
+<%= will_paginate %>
+Here Rails infers that @users is a list of User objects; moreover, when called with a collection of users, Rails automatically iterates through them and renders each one with the _user.html.erb partial. The result is the impressively compact code in Listing 9.38. As with any refactoring, you should verify that the test suite is still green after changing the application code:
+--
+
+how to set admin: 
+
+.toggle!(:admin)
